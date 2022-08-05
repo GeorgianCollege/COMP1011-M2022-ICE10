@@ -1,6 +1,7 @@
 package ca.georgiancollege.comp1011_m2022_ice10;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,23 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
+            }
+        });
+
+        // listener
+        binding.clickMeButton.setOnClickListener(new View.OnClickListener()
+        {
+            // Handler
+            @Override
+            public void onClick(View view)
+            {
+                Log.i("info",binding.helloWorldLabel.getText().toString());
+
+                // toggle the text of the helloWorldLabel every time the ClickMe button is clicked
+                binding.helloWorldLabel.setText(
+                        (binding.helloWorldLabel.getText().equals("Hello, World!")) ? R.string.goodbye_world : R.string.hello_world);
+
+                Log.i("info", "onClick Button was clicked!");
             }
         });
     }
